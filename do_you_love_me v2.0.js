@@ -17,10 +17,6 @@ yesBtn.addEventListener("click", () => {
   result(questionContainer, heartLoader, yesResultContainer, gifResult);
 });
 
-noBtn.addEventListener("click", () => {
-  result(questionContainer, heartLoader, noResultContainer, gifResult);
-});
-
 noBtn.addEventListener("mouseover", () => {
   const newX = Math.floor(Math.random() * questionContainer.offsetWidth);
   const newY = Math.floor(Math.random() * questionContainer.offsetWidth);
@@ -29,7 +25,32 @@ noBtn.addEventListener("mouseover", () => {
   noBtn.style.top = `${newY}px`;
 });
 
-// restart button functionality
+noBtn.addEventListener("click", () => {
+  const newX = Math.floor(Math.random() * questionContainer.offsetWidth);
+  const newY = Math.floor(Math.random() * questionContainer.offsetWidth);
+
+  noBtn.style.left = `${newX}px`;
+  noBtn.style.top = `${newY}px`;
+});
+
+let clickCount = 0;
+
+noBtn.addEventListener("click", () => {
+  clickCount++;
+
+  if (clickCount === 10) {
+    const newX = Math.floor(Math.random() * questionContainer.offsetWidth);
+    const newY = Math.floor(Math.random() * questionContainer.offsetHeight);
+
+    noBtn.style.left = `${newX}px`;
+    noBtn.style.top = `${newY}px`;
+
+    result(questionContainer, heartLoader, noResultContainer, gifResult);
+
+    clickCount = 0;
+  }
+});
+
 restartBtns.forEach((button) => {
   button.addEventListener("click", () => {
     heartLoader.style.display = "inherit";
