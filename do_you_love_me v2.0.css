@@ -29,6 +29,7 @@ body {
   top: 40%;
   left: 50%;
   transition: 0.2s;
+  text-align: center;
 }
 .tenor-gif-embed {
   height: 15rem;
